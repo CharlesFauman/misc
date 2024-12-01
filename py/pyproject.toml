@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "misc"
+version = "0.1.0"
+description = ""
+authors = ["github <github@robchad.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupytext = "^1.16.1"
+jupyterlab = "^4.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
