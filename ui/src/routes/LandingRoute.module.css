@@ -1,0 +1,6 @@
+.title {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1.25rem;  /* 20px equivalent */
+  text-shadow: 0.0625rem 0.0625rem 0 black, -0.0625rem -0.0625rem 0 black, 0.0625rem -0.0625rem 0 black, -0.0625rem 0.0625rem 0 black;  /* 1px equivalent */
+}

@@ -1,0 +1,45 @@
+name: Deploy the ui
+
+on:
+  push:
+    branches: ["main"]
+
+  # Allows running this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: "ui"
+  cancel-in-progress: true
+
+jobs:
+  deploy_ui:
+    defaults:
+      run:
+        working-directory: ui
+
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install Deps
+        run: bun install
+      
+      - name: Build
+        run: bun run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: RobChad/misc
+          publish_dir: ui/dist
