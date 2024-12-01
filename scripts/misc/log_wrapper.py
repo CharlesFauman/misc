@@ -1,11 +1,13 @@
 # %%
 from __future__ import annotations
 from functools import update_wrapper
-from typing import Callable
+from typing import Callable, ParamSpec, TypeVar, Generic
 from misc.wrapper import Wrapper
 
+P = ParamSpec("P")
+T = TypeVar("T")
 
-class LogWrapper[**P, T]:
+class LogWrapper(Generic[P, T]):
     def __init__(self, func: Callable[P, T], do_print: bool = False):
         self.func = func
         self.do_print = do_print
