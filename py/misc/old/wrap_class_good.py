@@ -6,20 +6,19 @@ from typing import Callable, overload
 def add(a: int, b: int) -> int:
     return a + b
 
+
 class Wrapper:
     @overload
     def __call__(
         self,
         func: None = None,
-    ) -> Wrapper:
-        ...
+    ) -> Wrapper: ...
 
     @overload
     def __call__[**P, T](
         self,
         func: Callable[P, T],
-    ) -> Callable[P, T]:
-        ...
+    ) -> Callable[P, T]: ...
 
     def __call__[**P, T](
         self,
@@ -29,7 +28,8 @@ class Wrapper:
             return func
 
         return Wrapper()
-    
+
+
 wrapper = Wrapper()
 
 wrapper()(add)(1, 2)

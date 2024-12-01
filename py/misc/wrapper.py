@@ -7,6 +7,7 @@ P = ParamSpec("P")
 T = TypeVar("T")
 K = ParamSpec("K")
 
+
 class Wrapper(Generic[K]):
     def __init__(self, wrapped: Callable[Concatenate[Any, K], Any]):
         self.wrapped = wrapped
@@ -17,8 +18,7 @@ class Wrapper(Generic[K]):
         func: Callable[P, T],
         *args: K.args,
         **kwargs: K.kwargs,
-    ) -> Callable[P, T]:
-        ...
+    ) -> Callable[P, T]: ...
 
     @overload
     def __call__(
@@ -26,9 +26,7 @@ class Wrapper(Generic[K]):
         func: Any = None,
         *args: K.args,
         **kwargs: K.kwargs,
-    ) -> Wrapper[K]:
-        ...
-
+    ) -> Wrapper[K]: ...
 
     def __call__(
         self,
